@@ -124,6 +124,7 @@ export class PartAnalysisPage {
         valid = false;
       }
     });
+    
     if (!valid) {
       this.alertCtrl.create({
         title: "Unable to generate part score",
