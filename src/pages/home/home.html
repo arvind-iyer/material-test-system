@@ -1,14 +1,72 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Test System
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <form (ngSubmit)="validateForm()">
+    <!-- <ion-item>
+      <ion-label>Working Medium</ion-label>
+      <ion-select [(ngModel)]="working_medium" multiple="false" name="medium">
+        <ion-option value="seawater" >Sea Water</ion-option>
+        <ion-option value="purewater" >Pure Water</ion-option>
+        <ion-option value="vacuum" >Vacuum</ion-option>
+        <ion-option value="chemicals" >Chemicals</ion-option>
+        <ion-option value="slurry" >Slurry</ion-option>
+      </ion-select>
+    </ion-item> -->
+    <!-- <ion-item>
+      <ion-label></ion-label>
+      <ion-select [(ngModel)]="isCorrosive" multiple="false" name="corrosive" interface="popover" >
+        <ion-option value="true" >Corrosive (e.g. sea water, chemical)</ion-option>
+        <ion-option value="false">Non-corrosive (e.g. vacuum, air, pure water)</ion-option>
+        
+      </ion-select>
+    </ion-item> -->
+
+    <ion-list radio-group [(ngModel)]="isCorrosive" name="workingMediumRadio">
+      <ion-list-header>
+        Working Medium  
+      </ion-list-header>
+      <ion-item >
+        <ion-label>Corrosive (e.g. sea water, chemical)</ion-label>
+        <ion-radio value="true"></ion-radio>
+      </ion-item>
+      <ion-item>
+          <ion-label>Non-corrosive (e.g. vacuum, air, pure water)</ion-label>
+          <ion-radio value="false"></ion-radio>
+        </ion-item>
+        
+    </ion-list>
+    <ion-item>
+      <ion-label >Working Temperature</ion-label>
+      <ion-input [(ngModel)]="working_temp" type="number" name="working_temp" step="0.01" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label >Melting Point Temperature</ion-label>
+      <ion-input [(ngModel)]="melting_point" type="number" name="melting_point" step="0.01" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label >Enter Load(N) </ion-label>
+      <ion-input [(ngModel)]="load" type="number" name="load" step="0.01" ></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Flow</ion-label>
+      <ion-checkbox checked="isChecked" [(ngModel)]="flow" name="flow" >Flowing?</ion-checkbox>
+    </ion-item>
+
+    <button ion-button block submit type="submit">Submit</button>
+    
+  </form>
+
+<div *ngIf="output.length > 0">
+  <h2> Output </h2>
+  <p *ngFor="let line of output"> {{line}}</p>
+</div>
 </ion-content>
