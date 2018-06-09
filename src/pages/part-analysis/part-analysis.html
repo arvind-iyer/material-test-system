@@ -1,0 +1,52 @@
+<!--
+  Generated template for the PartAnalysisPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Part Analysis</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+      <form>
+        <ion-list>
+          <ion-item *ngFor="let bool of props.bools">
+            <ion-label>{{bool.title}}</ion-label>
+            <ion-checkbox [(ngModel)]="bool.value" name="size-restriction"></ion-checkbox>
+            <button ion-button clear item-end icon-only (click)="buttonClick(bool)">
+              <ion-icon name="information-circle"></ion-icon>
+            </button> 
+          </ion-item>
+
+          <ion-item *ngFor="let num of props.nums">
+              <ion-label>{{num.title}}</ion-label>
+              <ion-input type="number" [(ngModel)]="num.value" name="size-restriction"></ion-input>
+              <button ion-button clear item-end icon-only (click)="buttonClick(num)">
+                  <ion-icon name="information-circle"></ion-icon>
+              </button> 
+          </ion-item>
+      
+            
+        </ion-list>
+        
+      </form>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+  </ion-grid>
+  
+    <ion-fab bottom right>
+      <button ion-fab (click)="validateForm()">Submit</button>
+    </ion-fab>
+
+</ion-content>

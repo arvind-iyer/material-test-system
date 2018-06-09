@@ -67,6 +67,18 @@
 
 <div *ngIf="output.length > 0">
   <h2> Output </h2>
-  <p *ngFor="let line of output"> {{line}}</p>
+  <p *ngFor="let line of output">
+      <ion-grid>
+        <ion-row>
+          <ion-col> {{line.title}}</ion-col>
+          <ion-col> 
+              <a href="assets/docs/{{line.standards}}"> Standard </a>
+          </ion-col>
+          <ion-col> 
+              <a href="assets/docs/{{line.documentation}}"> Documentation </a>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </p>
 </div>
 </ion-content>
