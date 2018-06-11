@@ -20,7 +20,7 @@ export class HomePage {
   isCorrosive : string = "";
   working_temp : number = 0.0;
   melting_point: number = 0.0;
-  load: number =  0.0;
+  load: boolean =  false;
   flow: boolean = false;
   output : Array<TestResult> = [];
   constructor(public navCtrl: NavController, public modalCtrl : ModalController) {
@@ -38,12 +38,15 @@ export class HomePage {
     if (this.isCorrosive == "true") {
       this.output.push({
         title: "Corrosion Test (ASTM-B117)", 
-        standards: "ASTM_B117.pdf", 
-        documentation: "ASTM_B117.pdf"});
+        standards: "ASTM_B117.pdf"});
     }
-    if (this.load > 0 && t_ratio > 0.5 ) {
+    if (this.load) {
+      this.output.push({title: "Tensile Test"});
+    }
+    if (t_ratio > 0.3 ) {
       this.output.push({title: "Creep Test"});
     } 
+    this.output.push({title: "Metallographic Test"});
     if (this.flow) {
       let modal = this.modalCtrl.create(FlowFormPage);
       modal.onDidDismiss(data => {
